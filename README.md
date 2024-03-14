@@ -3,9 +3,27 @@ App to illustrate how to make coffee in the different coffee makers (ratio of co
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Development Environment
 
-First, run the development server:
+### Docker Compose (Preferred)
+
+Create the brew network :coffee:
+
+```bash
+docker network create brew-network
+```
+
+Build and Run:
+This will run all the containers neccessary to run the NextJS app among other containers needed for persistance.
+
+```bash
+docker-compose -f docker-compose.dev.yml build
+
+docker-compose -f docker-compose.dev.yml up
+```
+
+### Locally
+Run the development server:
 
 ```bash
 npm run dev
@@ -21,6 +39,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+### Connect to the Database Locally
+
+To connect is recommended to use `psql` within the container. The command to connect should look like the folowing:
+
+```bash
+docker exec -it brew-postgres psql -U postgres -d brew-db
+```
 
 ## Deploy on Vercel
 

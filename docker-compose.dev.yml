@@ -26,6 +26,22 @@ services:
       - brew-network
 
   # Add more containers below (nginx, postgres, etc.)
+  brew-postgres:
+    image: postgres:15.3
+    container_name: brew-postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: brew-db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+# Define Volumes at compose level
+volumes:
+  postgres-data:
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
