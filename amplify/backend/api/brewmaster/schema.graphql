@@ -1,0 +1,26 @@
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+type Recipe @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  slugName: String!
+  description: String
+  elaborationTime: AWSTime!
+  brewTime: Int!
+  difficulty: Difficulty!
+  userID: ID! @index(name: "byUser")
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userName: String!
+  password: String!
+  email: AWSEmail!
+  regDate: AWSDateTime!
+  Recipes: [Recipe] @hasMany(indexName: "byUser", fields: ["id"])
+}
+ 

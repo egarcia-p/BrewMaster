@@ -10,6 +10,11 @@
       "StackName": "amplify-amplifya9e61f700cde4-staging-06511",
       "StackId": "arn:aws:cloudformation:us-east-1:471112901054:stack/amplify-amplifya9e61f700cde4-staging-06511/57203600-08e0-11ef-a61c-0eac9f9d5d43",
       "AmplifyAppId": "ddhqdduypsyx2"
+    },
+    "categories": {
+      "api": {
+        "brewmaster": {}
+      }
     }
   }
 }
