@@ -1,6 +1,5 @@
 "use server";
 
-import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/api";
 import {
   createRecipe,
@@ -10,12 +9,23 @@ import {
   updateRecipe,
   updateUser,
 } from "@/graphql/mutations";
-import config from "../amplifyconfiguration.json";
 import { Difficulty } from "@/models";
+import { Amplify } from "aws-amplify";
+import config from "../amplifyconfiguration.json";
+import { listRecipes } from "@/graphql/queries";
 
 Amplify.configure(config);
 
 const client = generateClient();
+
+export async function actionListRecipes() {
+  client.graphql;
+  const recipes = await client.graphql({
+    query: listRecipes,
+  });
+  console.log(recipes);
+  return recipes;
+}
 
 export async function actionCreateUser(formData) {
   client.graphql;
